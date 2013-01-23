@@ -1,0 +1,109 @@
+<head>
+  <title>Leaderboard</title>
+
+</head>
+
+<body>
+<style>
+.about{
+	
+	padding-left: 570px;
+}
+</style>
+  <div id="outer">
+   {{loginButtons align="right"}}
+  <div class="player">
+    <span class="name"><strong> Leaderboards </strong></span>
+    <span class="score">Score</span>
+    <span class="wins"> Wins </span>
+    <span class="losses"> Losses </span>
+
+  </div>
+  
+  
+    {{> leaderboard}}
+  </div>
+  <div class="break">  </div>
+  <p class="about">"Leaderboards" for The VIT CS 1.6 League <br/> --------- <br/>  created by <strong> Siddharth Gupta </strong> <br/> <a href="http://facebook.com/biocross"> facebook.com/biocross</a> <br/><br/>idea and help by <strong>Ayush Amresh</strong> </p> 
+
+
+
+</body>
+
+
+
+<template name="leaderboard">
+  <div class="leaderboard">
+  <br/>
+  <div class="player">  <span class="name"> <strong> Group A </strong> </span> </div>
+    {{#each playersa}}
+      {{> player}}
+    {{/each}}
+    <br/>
+    <div class="player">  <span class="name"> <strong> Group B </strong> </span> </div>
+    {{#each playersb}}
+      {{> player}}
+    {{/each}}
+   <br/> 
+    <div class="player">  <span class="name"> <strong> Group C </strong> </span> </div>
+    {{#each playersc}}
+      {{> player}}
+    {{/each}}
+    <br/> 
+    <div class="player">  <span class="name"> <strong> Group D </strong> </span> </div>
+    {{#each playersd}}
+      {{> player}}
+    {{/each}}
+
+  </div>
+
+  {{#if selected_name}}
+  <div class="details">
+   <div class="name">{{selected_name}}</div>
+   <p> </p>
+  <div class="detailsLeft">
+   
+    <p> Adders </p>
+    <input type="button" class="win" value="Win" />
+    <br/>
+    <input type="button" class="winbonus" value="Win + Bonus" />
+    <br/>
+    <input type="button" class="bonus" value="Bonus (But Loss)" />
+    <br/>
+    <input type="button" class="lossbutton" value="Loss" />
+  </div>
+  <div class="detailsRight">
+    <p> Undo Buttons </p>
+    
+     <input type="button" class="u_win undo" value="Win" />
+    <br/>
+    <input type="button" class="u_winbonus undo" value="Win + Bonus" />
+    <br/>
+    <input type="button" class="u_bonus undo" value="Bonus (But Loss)" />
+    <br/>
+    <input type="button" class="u_lossbutton undo" value="Loss" />
+    <br/>
+  </div>
+    
+    
+
+  </div>
+     {{/if}}
+
+  {{#unless selected_name}}
+  
+  <div class="none">Sign in, then click a team to select and change scores. </div>
+  {{/unless}}
+</template>
+
+<template name="player">
+  <div class="player {{selected}}">
+    <span class="name">{{name}}</span>
+    <span class="score">{{score}}</span>
+    <span class="wins"> {{wins}} </span>
+    <span class="losses"> {{loss}} </span>
+  </div>
+  
+</template>
+
+
